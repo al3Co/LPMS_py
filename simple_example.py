@@ -19,11 +19,11 @@ lpmsSensor = LpmsNAV.LpmsNAV(port, baudrate)
 def pretty_print_sensor_data(sensor_data):
     j = 25
     d = '.'
-    print "Frame Counter:".ljust(j, d), sensor_data[0]
-    print "Angle (deg):".ljust(j, d), sensor_data[1]
-    print "AngVel (deg/s):".ljust(j, d), sensor_data[2]
-    print "Acc (g):".ljust(j, d), ['%+.3f' % f for f in sensor_data[3]]
-    print "Press enter to quit"
+    print ("Frame Counter:".ljust(j, d), sensor_data[0])
+    print ("Angle (deg):".ljust(j, d), sensor_data[1])
+    print ("AngVel (deg/s):".ljust(j, d), sensor_data[2])
+    print ("Acc (g):".ljust(j, d), ['%+.3f' % f for f in sensor_data[3]])
+    print ("Press enter to quit")
 
 def get_stream_data():
     sensor_data = lpmsSensor.get_stream_data()

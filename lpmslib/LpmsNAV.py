@@ -4,9 +4,9 @@ import threading
 import struct
 import sys
 from datetime import datetime, timedelta
-from LpmsConfig import *
-from lputils import *
-from LpmsConfigurationSettings import LpmsConfigurationSettings
+from .LpmsConfig import *
+from .lputils import *
+from .LpmsConfigurationSettings import LpmsConfigurationSettings
 
 #TODO:
 # check serial port opened before executing commands
@@ -146,7 +146,7 @@ class LpmsNAV(object):
         return struct.pack("i", v)
         
     def __print_str_to_hex(self, s):
-        print ":".join("{:02x}".format(ord(c)) for c in s)
+        print (":".join("{:02x}".format(ord(c)) for c in s))
 
     # Parser
     def __parse_function(self):
