@@ -1,21 +1,30 @@
 import serial
-# https://gist.github.com/projectweekend/1fae5a8cf2a5b9282f3d
+import serial.tools.list_ports
 
-# this port address is for the serial tx/rx pins on the GPIO header
-SERIAL_PORT = '/dev/ttyAMA0'
-# be sure to set this to the same rate used on the Arduino
+# https://pythonhosted.org/pyserial/shortintro.html#opening-serial-ports
+
+#SERIAL_PORT = '/dev/ttyAMA0'
 SERIAL_RATE = 9600
 
+def list_ports():
+	list = serial.tools.list_ports.comports()
+	connected = []
+	for element in list:
+		connected.append(element.device)
+	print("Connected COM ports: " + str(connected))
+	return connected
 
-def main():
-    ser = serial.Serial(SERIAL_PORT, SERIAL_RATE)
-    while True:
-        # using ser.readline() assumes each line contains a single reading
-        # sent using Serial.println() on the Arduino
-        reading = ser.readline().decode('utf-8')
-        # reading is a string...do whatever you want from here
-        print(reading)
+def main(connected):
+	print(connected)
+	ser = serial.Serial(connected, SERIAL_RATE)
+	while True:
+		# using ser.readline() assumes each line contains a single reading
+		# sent using Serial.println() on the Arduino
+		reading = ser.readline().decode('utf-8')
+		# reading is a string...do whatever you want from here
+		print(reading)
 
 
 if __name__ == "__main__":
-    main()
+	connected = list_ports()
+	main(connected)

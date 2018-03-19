@@ -1,4 +1,5 @@
 import serial.tools.list_ports
+
 list = serial.tools.list_ports.comports()
 connected = []
 for element in list:
