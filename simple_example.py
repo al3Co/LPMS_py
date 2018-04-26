@@ -7,7 +7,7 @@ from lpmslib import lputils
 
 ##############################
 # User settings
-port = 'COM3'
+port = '/dev/tty.SLAB_USBtoUART'
 baudrate = 115200
 ##############################
 

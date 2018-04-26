@@ -334,7 +334,7 @@ class LpmsNAV(object):
             return False
 
         if self.verbose: logd(self.TAG, "Set command mode")
-        self.__lpbus_set_none(GOTO_COMMAND_MODE)
+        self.__lpbus_set_none(LPMS_GOTO_COMMAND_MODE)
         self.wait_for_ack = True
         self.__wait_for_response()
         self.is_command_mode = True
